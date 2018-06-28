@@ -29,13 +29,11 @@ class Client implements ClientContract
         ]);
     }
 
-    public function getTicker($symbol = null)
+    public function getTicker($symbol)
     {
         $base = 'ticker.do';
         $params = [];
-        if (!is_null($symbol)) {
-            $params['symbol'] = $symbol;
-        }
+        $params['symbol'] = $symbol;
 
         return $this->request($base, $params);
     }

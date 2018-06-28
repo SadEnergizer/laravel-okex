@@ -40,7 +40,7 @@ Please refer to the [Api Documentation](https://github.com/okcoin-okex/API-docs-
 use Sadenergizer\Okex\Okex;
 
 // public API methods
-Okex::getTicker($symbol = null);
+Okex::getTicker($symbol);
 
 // private API methods
 Okex::getOrder($symbol, $id);
