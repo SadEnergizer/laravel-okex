@@ -19,7 +19,7 @@ class Client implements ClientContract
     {
         $this->apiUrl = $url;
         $this->apiVersion = $version;
-        $this->url = "{$this->apiUrl}/{$version}";
+        $this->url = "{$url}/{$version}";
 
         $this->key = array_get($auth, 'key');
         $this->secret = array_get($auth, 'secret');

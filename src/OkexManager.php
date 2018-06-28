@@ -15,7 +15,9 @@ class OkexManager
     public function __construct()
     {
         $this->with(
-            config('okex.auth')
+            config('okex.auth'),
+            config('okex.url'),
+            config('okex.version')
         );
     }
 
@@ -46,7 +48,8 @@ class OkexManager
      * Create new client instance with given credentials.
      *
      * @param array $auth
-     * @param array $urls
+     * @param string $url
+     * @param string $version
      * @return $this
      */
     public function with($auth, $url, $version)
