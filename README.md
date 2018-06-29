@@ -34,17 +34,23 @@ Add the alias to your `config/app.php`:
 
 ### Usage
 
-Please refer to the [Api Documentation](https://github.com/okcoin-okex/API-docs-OKEx.com/) for more info, or read the [docblocks](https://github.com/sadenergizer/laravel-okex/blob/master/src/Client.php)!
+Please refer to the [Api Documentation](https://github.com/okcoin-okex/API-docs-OKEx.com/) for more info!
 
 ```
 use Sadenergizer\Okex\Okex;
 
 // public API methods
 Okex::getTicker($symbol);
+Okex::getDepth($symbol, $size);
+Okex::getTrades($symbol, $since = null);
+Okex::getCandlestickData($symbol, $type, $size, $since);
 
 // private API methods
+Okex::getUserInfo();
+Okex::placeOrder($symbol, $type, $price, $amount);
 Okex::getOrder($symbol, $id);
 Okex::cancelOrder($symbol, $id);
+Okex::getWalletInfo();
 ```
 
 This package is provided as-is. Do with it what you want!

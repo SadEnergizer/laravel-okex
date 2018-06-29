@@ -38,6 +38,64 @@ class Client implements ClientContract
         return $this->request($base, $params);
     }
 
+    public function getDepth($symbol, $size)
+    {
+        $base = 'depth.do';
+        $params = [];
+        $params['symbol'] = $symbol;
+        $params['size'] = $size;
+
+        return $this->request($base, $params);
+    }
+
+    public function getTrades($symbol, $since = null)
+    {
+        $base = 'trades.do';
+        $params = [];
+        $params['symbol'] = $symbol;
+        if (!is_null($since)) {
+            $params['since'] = $since;
+        }
+
+        return $this->request($base, $params);
+    }
+
+    public function getCandlestickData($symbol, $type, $size, $since)
+    {
+        $base = 'kline.do';
+        $params = [];
+        $params['symbol'] = $symbol;
+        $params['type'] = $type;
+        $params['size'] = $size;
+        $params['since'] = $since;
+
+        return $this->request($base, $params);
+    }
+
+    public function getUserInfo()
+    {
+        $base = 'userinfo.do';
+        $params = [];
+        $method = 'POST';
+        $isPublic = false;
+
+        return $this->request($base, $params, $method, $isPublic);
+    }
+
+    public function placeOrder($symbol, $type, $price, $amount)
+    {
+        $base = 'trade.do';
+        $params = [];
+        $params['symbol'] = $symbol;
+        $params['type'] = $type;
+        $params['price'] = $price;
+        $params['amount'] = $amount;
+        $method = 'POST';
+        $isPublic = false;
+
+        return $this->request($base, $params, $method, $isPublic);
+    }
+
     public function getOrder($symbol, $id)
     {
         $base = 'order_info.do';
@@ -56,6 +114,16 @@ class Client implements ClientContract
         $params = [];
         $params['symbol'] = $symbol;
         $params['order_id'] = $id;
+        $method = 'POST';
+        $isPublic = false;
+
+        return $this->request($base, $params, $method, $isPublic);
+    }
+
+    public function getWalletInfo()
+    {
+        $base = 'wallet_info.do';
+        $params = [];
         $method = 'POST';
         $isPublic = false;
 
