@@ -68,7 +68,7 @@ class Client implements ClientContract
             $params['api_key'] = $this->key;
             ksort($params);
             $params['secret_key'] = $this->secret;
-            $sign = md5(http_build_query($params));
+            $sign = strtoupper(md5(http_build_query($params)));
             unset($params['secret_key']);
             $params['sign'] = $sign;
         }
