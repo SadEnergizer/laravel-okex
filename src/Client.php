@@ -149,7 +149,7 @@ class Client implements ClientContract
             } else {
                 $response = $this->client->request($method, $uri, ['form_params' => $params])->getBody();
             }
-        } catch (ClientException $e) {
+        } catch (\Exception $e) {
             return null;
         }
 
