@@ -145,9 +145,9 @@ class Client implements ClientContract
 
         try {
             if ($method == 'GET') {
-                $response = $this->client->request($method, $uri, ['query' => $params])->getBody();
+                $response = $this->client->request($method, $uri, ['query' => $params])->getBody()->getContents();
             } else {
-                $response = $this->client->request($method, $uri, ['form_params' => $params])->getBody();
+                $response = $this->client->request($method, $uri, ['form_params' => $params])->getBody()->getContents();
             }
         } catch (\Exception $e) {
             return null;
